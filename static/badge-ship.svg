@@ -1,0 +1,9 @@
+it<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+  <title>Paths badge ship</title>
+  <desc>Simple rocket‑ship icon for Paths weeks</desc>
+  <g fill="none" stroke="white" stroke-width="2" stroke-linejoin="round">
+    <path d="M20 4c-3.5 2.6-6 7.8-6 14.5 0 3.4.7 6.1 1.7 8.3L20 36l4.3-9.2c1-2.2 1.7-4.9 1.7-8.3C26 11.8 23.5 6.6 20 4Z" fill="white"/>
+    <circle cx="20" cy="15" r="3" fill="#c96f6f"/>
+    <path d="M14 18 8 16l4 6m12-6 6-2-4 6" fill="white"/>
+  </g>
+</svg>
