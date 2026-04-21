@@ -9,6 +9,21 @@
 	);
 	let errorMsg = $state('');
 	let count = $state(0);
+	const demoPrizes = [
+		{ name: 'Raspberry Pi Zero', price: 20, img: 'https://assets.raspberrypi.com/static/4c1ac79e7c60c2e14e385c6e851de0c6/44af7/zero2-close-up.webp' },
+		{ name: 'Yubikey', price: 55, img: 'https://www.yubico.com/wp-content/uploads/2022/12/YubiKey-5C-NFC-Front-Hanging.png' },
+		{ name: 'ESP32 Kit', price: 20, img: 'https://cdn.sparkfun.com/assets/parts/2/3/4/8/3/23824-ESP32-S3-DevKitC-1-Feature.jpg' },
+		{ name: 'Pinecil', price: 30, img: 'https://pine64.com/wp-content/uploads/2024/04/Pinecil-V2.2.png' },
+		{ name: 'Flipper Zero', price: 170, img: 'https://shop.flipperzero.one/cdn/shop/files/top_800x.png' },
+		{ name: 'Steam Deck', price: 550, img: 'https://cdn.cloudflare.steamstatic.com/steamdeck/images/decksd-oled.png' },
+		{ name: 'iPad + Pencil', price: 450, img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-card-40-background-202405?wid=400&hei=500&fmt=p-jpg' },
+		{ name: 'MacBook Air', price: 1100, img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mba13-m4-midnight-select-202502?wid=400&hei=400&fmt=png-alpha' },
+		{ name: 'Framework', price: 1000, img: 'https://frame.work/media/Framework_Laptop_13_DIY_AMD_front_1.png' },
+		{ name: '3D Printer', price: 300, img: 'https://img.staticdj.com/bbde18a02d4f50b4fd9e9d01fe3d7e0c_1080.jpg' },
+		{ name: 'Raspberry Pi 5', price: 60, img: 'https://assets.raspberrypi.com/static/e239a2d5e2af05e9c5bdd30c0e1e5674/3b52a/Raspberry-Pi-5-front.webp' },
+		{ name: 'AirPods Pro', price: 250, img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-pro-2-hero-select-202409?wid=400&hei=400&fmt=png-alpha' },
+	];
+
 	const demoSteps = [
 		{ state: 'gold', label: 'Wk 1' },
 		{ state: 'gold', label: 'Wk 2' },
@@ -186,6 +201,41 @@
 		<span class="scroll-hint-text">scroll for more</span>
 		<span class="scroll-arrow">↓</span>
 	</div>
+
+	<section class="prizes">
+		<h2 class="prizes-title">prizes you could earn 🎁</h2>
+		<p class="prizes-sub">1 hour = $5 · up to 17 weeks</p>
+		<div class="ticker-wrap">
+			<div class="ticker">
+				{#each [...demoPrizes, ...demoPrizes] as prize}
+					<div class="prize-card">
+						<img src={prize.img} alt={prize.name} class="prize-img" />
+						<div class="prize-info">
+							<span class="prize-name">{prize.name}</span>
+							<span class="prize-meta">
+								<span class="prize-hours">~{prize.price / 5} hours</span>
+							</span>
+						</div>
+					</div>
+				{/each}
+			</div>
+		</div>
+		<div class="ticker-wrap ticker-reverse">
+			<div class="ticker">
+				{#each [...demoPrizes.slice().reverse(), ...demoPrizes.slice().reverse()] as prize}
+					<div class="prize-card">
+						<img src={prize.img} alt={prize.name} class="prize-img" />
+						<div class="prize-info">
+							<span class="prize-name">{prize.name}</span>
+							<span class="prize-meta">
+								<span class="prize-hours">~{prize.price / 5} hours</span>
+							</span>
+						</div>
+					</div>
+				{/each}
+			</div>
+		</div>
+	</section>
 
 	<section class="faq" class:faqVisible>
 		<div class="faq-inner">
@@ -564,6 +614,113 @@
 	@keyframes bounce {
 		0%, 100% { transform: translateY(-3px); }
 		50% { transform: translateY(6px); }
+	}
+
+	/* ── Prizes ticker ── */
+	.prizes {
+		width: 100%;
+		padding: 3rem 0 2rem;
+		overflow: hidden;
+	}
+
+	.prizes-title {
+		text-align: center;
+		color: #fff;
+		font-size: clamp(1.4rem, 3.5vw, 2rem);
+		font-weight: 800;
+		margin: 0 0 0.4rem;
+		letter-spacing: -0.01em;
+	}
+
+	.prizes-sub {
+		text-align: center;
+		color: rgba(255, 255, 255, 0.5);
+		font-size: 0.85rem;
+		font-weight: 600;
+		margin: 0 0 1.5rem;
+	}
+
+	.ticker-wrap {
+		width: 100%;
+		overflow: hidden;
+		padding: 0.5rem 0;
+		mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+		-webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+	}
+
+	.ticker {
+		display: flex;
+		gap: 0.75rem;
+		width: max-content;
+		animation: scroll-left 30s linear infinite;
+	}
+
+	.ticker-reverse .ticker {
+		animation: scroll-right 35s linear infinite;
+	}
+
+	@keyframes scroll-left {
+		0% { transform: translateX(0); }
+		100% { transform: translateX(-50%); }
+	}
+
+	@keyframes scroll-right {
+		0% { transform: translateX(-50%); }
+		100% { transform: translateX(0); }
+	}
+
+	.prize-card {
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 0.55rem 1rem 0.55rem 0.55rem;
+		background: rgba(255, 255, 255, 0.1);
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		border-radius: 14px;
+		backdrop-filter: blur(6px);
+		transition: transform 0.2s, background 0.2s;
+		cursor: default;
+	}
+
+	.prize-card:hover {
+		transform: translateY(-3px) scale(1.03);
+		background: rgba(255, 255, 255, 0.16);
+	}
+
+	.prize-img {
+		width: 48px;
+		height: 48px;
+		border-radius: 10px;
+		object-fit: cover;
+		background: rgba(255, 255, 255, 0.85);
+		flex-shrink: 0;
+	}
+
+	.prize-info {
+		display: flex;
+		flex-direction: column;
+		gap: 0.15rem;
+	}
+
+	.prize-name {
+		color: #fff;
+		font-size: 0.85rem;
+		font-weight: 700;
+		white-space: nowrap;
+	}
+
+	.prize-meta {
+		display: flex;
+		align-items: center;
+		gap: 0.3rem;
+	}
+
+	.prize-hours {
+		color: rgba(255, 255, 255, 0.5);
+		font-size: 0.7rem;
+		font-weight: 600;
+		white-space: nowrap;
 	}
 
 	/* ── FAQ section (shipathon-style) ── */
