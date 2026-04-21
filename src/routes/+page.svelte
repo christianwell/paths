@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/state';
 	import PathBadge from '$lib/PathBadge.svelte';
+	import catalog from '$lib/catalog.json';
 
 	let email = $state('');
 	let status = $state<'idle' | 'loading' | 'success' | 'error'>(
@@ -9,20 +10,7 @@
 	);
 	let errorMsg = $state('');
 	let count = $state(0);
-	const demoPrizes = [
-		{ name: 'Raspberry Pi Zero', price: 20, img: 'https://assets.raspberrypi.com/static/4c1ac79e7c60c2e14e385c6e851de0c6/44af7/zero2-close-up.webp' },
-		{ name: 'Yubikey', price: 55, img: 'https://www.yubico.com/wp-content/uploads/2022/12/YubiKey-5C-NFC-Front-Hanging.png' },
-		{ name: 'ESP32 Kit', price: 20, img: 'https://cdn.sparkfun.com/assets/parts/2/3/4/8/3/23824-ESP32-S3-DevKitC-1-Feature.jpg' },
-		{ name: 'Pinecil', price: 30, img: 'https://pine64.com/wp-content/uploads/2024/04/Pinecil-V2.2.png' },
-		{ name: 'Flipper Zero', price: 170, img: 'https://shop.flipperzero.one/cdn/shop/files/top_800x.png' },
-		{ name: 'Steam Deck', price: 550, img: 'https://cdn.cloudflare.steamstatic.com/steamdeck/images/decksd-oled.png' },
-		{ name: 'iPad + Pencil', price: 450, img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-card-40-background-202405?wid=400&hei=500&fmt=p-jpg' },
-		{ name: 'MacBook Air', price: 1100, img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mba13-m4-midnight-select-202502?wid=400&hei=400&fmt=png-alpha' },
-		{ name: 'Framework', price: 1000, img: 'https://frame.work/media/Framework_Laptop_13_DIY_AMD_front_1.png' },
-		{ name: '3D Printer', price: 300, img: 'https://img.staticdj.com/bbde18a02d4f50b4fd9e9d01fe3d7e0c_1080.jpg' },
-		{ name: 'Raspberry Pi 5', price: 60, img: 'https://assets.raspberrypi.com/static/e239a2d5e2af05e9c5bdd30c0e1e5674/3b52a/Raspberry-Pi-5-front.webp' },
-		{ name: 'AirPods Pro', price: 250, img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-pro-2-hero-select-202409?wid=400&hei=400&fmt=png-alpha' },
-	];
+	const demoPrizes = catalog;
 
 	function minHrsPerWeek(price: number) {
 		return Math.ceil(price / 5 / 17);
@@ -201,11 +189,6 @@
 		</div>
 	</div>
 
-	<div class="scroll-hint">
-		<span class="scroll-hint-text">scroll for more</span>
-		<span class="scroll-arrow">↓</span>
-	</div>
-
 	<section class="prizes">
 		<h2 class="prizes-title">prizes you could earn 🎁</h2>
 		<p class="prizes-sub">1 hour = $5 · up to 17 weeks</p>
@@ -359,18 +342,19 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		padding: 0 1.25rem 5rem;
+		padding: 0 0 5rem;
 		box-sizing: border-box;
+		overflow-x: hidden;
 	}
 
 	/* ── Hero ── */
 	.hero {
 		width: 100%;
-		min-height: 100vh;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 2rem 0;
+		padding: 4rem 1.25rem 2rem;
+		box-sizing: border-box;
 	}
 
 	.hero-inner {
@@ -600,35 +584,12 @@
 		margin: 0;
 	}
 
-	/* ── Scroll hint ── */
-	.scroll-hint {
-		margin-top: -2rem;
-		margin-bottom: 1rem;
-		color: rgba(255, 255, 255, 0.7);
-		font-size: 0.8rem;
-		font-weight: 600;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 0.15rem;
-		animation: fadeUp 1.2s ease-out;
-	}
-
-	.scroll-arrow {
-		font-size: 1rem;
-		animation: bounce 1.6s ease-in-out infinite;
-	}
-
-	@keyframes bounce {
-		0%, 100% { transform: translateY(-3px); }
-		50% { transform: translateY(6px); }
-	}
-
 	/* ── Prizes ticker ── */
 	.prizes {
 		width: 100%;
 		padding: 3rem 0 2rem;
 		overflow: hidden;
+		max-width: 100vw;
 	}
 
 	.prizes-title {
@@ -745,7 +706,7 @@
 
 	/* ── FAQ section (shipathon-style) ── */
 	.faq {
-		padding: 5rem 2rem 4rem;
+		padding: 5rem 1.25rem 4rem;
 		width: 100%;
 		box-sizing: border-box;
 	}

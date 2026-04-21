@@ -1,0 +1,44 @@
+[
+	{
+		"name": "Raspberry Pi Zero 2 W",
+		"price": 20,
+		"img": "https://user-cdn.hackclub-assets.com/019db1b1-96e5-719d-ba7d-fb25090184f8/image.png",
+		"url": "https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/"
+	},
+	{
+		"name": "Pinecil",
+		"price": 30,
+		"img": "https://user-cdn.hackclub-assets.com/019db1b4-8019-795c-90ba-f8cfc9140af5/image.png",
+		"url": "https://pine64.com/product/pinecil-smart-mini-portable-soldering-iron/"
+	},
+	{
+		"name": "Yubikey",
+		"price": 55,
+		"img": "https://user-cdn.hackclub-assets.com/019db1b2-6f17-7464-8a2c-4c00b3a5c7f4/image.png",
+		"url": "https://www.yubico.com/store/"
+	},
+	{
+		"name": "Flipper Zero",
+		"price": 200,
+		"img": "https://cdn.hackclub.com/019db1b6-011c-73da-a80e-3b6a420832ea/image.png",
+		"url": "https://shop.flipperzero.one/"
+	},
+	{
+		"name": "AirPods Pro",
+		"price": 250,
+		"img": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-pro-2-hero-select-202409?wid=400&hei=400&fmt=png-alpha",
+		"url": "https://www.apple.com/shop/product/MTJV3AM/A/airpods-pro-2"
+	},
+	{
+		"name": "Bambu Lab A1",
+		"price": 300,
+		"img": "https://user-cdn.hackclub-assets.com/019db1bb-bc93-737e-958c-4fb5dc272355/image.png",
+		"url": "https://bambulab.com/en/a1"
+	},
+	{
+		"name": "MacBook Air",
+		"price": 1100,
+		"img": "https://user-cdn.hackclub-assets.com/019db1b8-1a18-798b-a08d-f0423d7ffa8b/image.png",
+		"url": "https://www.apple.com/shop/buy-mac/macbook-air"
+	}
+]
