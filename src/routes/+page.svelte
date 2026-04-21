@@ -24,6 +24,10 @@
 		{ name: 'AirPods Pro', price: 250, img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-pro-2-hero-select-202409?wid=400&hei=400&fmt=png-alpha' },
 	];
 
+	function minHrsPerWeek(price: number) {
+		return Math.ceil(price / 5 / 17);
+	}
+
 	const demoSteps = [
 		{ state: 'gold', label: 'Wk 1' },
 		{ state: 'gold', label: 'Wk 2' },
@@ -214,6 +218,8 @@
 							<span class="prize-name">{prize.name}</span>
 							<span class="prize-meta">
 								<span class="prize-hours">~{prize.price / 5} hours</span>
+								<span class="prize-sep">·</span>
+								<span class="prize-weekly">min {minHrsPerWeek(prize.price)} hrs/wk</span>
 							</span>
 						</div>
 					</div>
@@ -229,6 +235,8 @@
 							<span class="prize-name">{prize.name}</span>
 							<span class="prize-meta">
 								<span class="prize-hours">~{prize.price / 5} hours</span>
+								<span class="prize-sep">·</span>
+								<span class="prize-weekly">min {minHrsPerWeek(prize.price)} hrs/wk</span>
 							</span>
 						</div>
 					</div>
@@ -718,6 +726,18 @@
 
 	.prize-hours {
 		color: rgba(255, 255, 255, 0.5);
+		font-size: 0.7rem;
+		font-weight: 600;
+		white-space: nowrap;
+	}
+
+	.prize-sep {
+		color: rgba(255, 255, 255, 0.2);
+		font-size: 0.6rem;
+	}
+
+	.prize-weekly {
+		color: rgba(255, 255, 255, 0.4);
 		font-size: 0.7rem;
 		font-weight: 600;
 		white-space: nowrap;
