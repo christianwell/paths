@@ -13,7 +13,7 @@
 	const demoPrizes = catalog;
 
 	function minHrsPerWeek(price: number) {
-		return Math.ceil(price / 5 / 17);
+		return Math.ceil(price / 5 / 6);
 	}
 
 	const demoSteps = [
