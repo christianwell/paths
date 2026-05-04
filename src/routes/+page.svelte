@@ -32,7 +32,7 @@
 		},
 		{
 			q: 'what does the ai do?',
-			a: 'You fill out a quick form and our AI designs a personalized path — up to 17 weeks of weekly themes tailored just for you.'
+			a: 'You fill out a quick form and our AI designs a personalized path — up to 6 weeks of weekly themes tailored just for you.'
 		},
 		{
 			q: 'what do i win?',
@@ -191,7 +191,7 @@
 
 	<section class="prizes">
 		<h2 class="prizes-title">prizes you could earn 🎁</h2>
-		<p class="prizes-sub">1 hour = $5 · up to 17 weeks</p>
+		<p class="prizes-sub">1 hour = $5 · up to 6 weeks</p>
 		<div class="ticker-wrap">
 			<div class="ticker">
 				{#each [...demoPrizes, ...demoPrizes] as prize}
